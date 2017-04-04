@@ -4,7 +4,7 @@
   "description": "",
   "main": "overzoom.js",
   "scripts": {
-    "test": "node overzoom.js | geojsonio"
+    "test": "node overzoom.js --z 6 --x 11 --y 23 --buffer 512 | geojsonio"
   },
   "author": "",
   "license": "ISC",

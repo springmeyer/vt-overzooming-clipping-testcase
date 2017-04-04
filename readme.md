@@ -1,5 +1,14 @@
 
-Testcase demonstrating a possible vt compositing bug.
+Testcase demonstrating a possible vt compositing bug in node-mapnik/mapnik-vt.
+
+## Setup
+
+Run:
+
+```
+npm install
+npm install -g geojsonio-cli
+```
 
 First lets look at a working situation. The below usage demonstrates how a buffer of 256 on the "dest" vector tile in compositing leads to a correct looking buffered result for the clipped polygon that is equally buffered out on all sides.
 
