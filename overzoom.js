@@ -132,12 +132,6 @@ function getParent(zxy) {
  return [tile[2],tile[0],tile[1]];
 }
 
-
-//var zxy = [5,5,11];
-// upper left
-//var child_zxy = [6,10,22];
-// lower right
-// http://www.maptiler.org/google-maps-coordinates-tile-bounds-projection/
 function generateTileTestCase(z,x,y,dest_buffer) {
 
   var child_zxy = [z,x,y];
@@ -199,18 +193,9 @@ function generateTileTestCase(z,x,y,dest_buffer) {
 }
 
 
-
 var argv = require('minimist')(process.argv.slice(2));
-//console.dir(argv);
 
-//generateTileTestCase(6,11,23,1,256*16);
-// This generates a `parent_clipped` polygon that looks equally buffered
-//generateTileTestCase(6,11,23,256);
-
-// Problem: any buffer greater than 256 leads to a `parent_clipped` polygon that in not buffered equally on all sides. Why?
-//generateTileTestCase(6,11,23,512);
 generateTileTestCase(argv.z,argv.x,argv.y,argv.buffer);
-
 
 
 
