@@ -137,6 +137,9 @@ function generateTileTestCase(z,x,y,dest_buffer) {
   var child_zxy = [z,x,y];
   var parent_zxy = getParent(child_zxy);
   var source_vt = new mapnik.VectorTile(parent_zxy[0],parent_zxy[1],parent_zxy[2]);
+  var source_buffer = 255*16;
+  // CRITICAL: this buffer needs to be set before `source_vt.addGeoJSON`
+  source_vt.bufferSize = source_buffer;
 
   // buffer out the data a bit outside the tile extents to ensure that if we inflate
   // the clipping buffer then we should get more data
@@ -150,8 +153,6 @@ function generateTileTestCase(z,x,y,dest_buffer) {
   source_vt.addGeoJSON(child_data,"child");
 
   // changing source buffer does not seem to impact the testcase, so we hardcode
-  var source_buffer = 256*16;
-  source_vt.bufferSize = source_buffer;
   var dest_vt = new mapnik.VectorTile(child_zxy[0],child_zxy[1],child_zxy[2]);
 
   // **problem** dest_buffer greater than 256 adds more to left and top than right and bottom - shouldn't it add equal amounts to all sides?
